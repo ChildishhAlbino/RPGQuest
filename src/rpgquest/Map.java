@@ -7,11 +7,13 @@ package rpgquest;
 
 import java.util.List;
 import java.util.ArrayList;
+
 /**
  *
  * @author Connor
  */
 class Map {
+
     private List<Location> locations;
     private Location Start = new Location("Start");
     private Location Mountain = new Location("Start");
@@ -19,8 +21,8 @@ class Map {
     private Location Ravine = new Location("Start", Location.Consequence.Lose);
     private Location Slope = new Location("Start", Location.Consequence.Win);
     private Location Kiosk = new Location("Start");
-        
-    public Map(){
+
+    public Map() {
         locations = new ArrayList<>();
         locations.add(Start);
         locations.add(Mountain);
@@ -28,16 +30,16 @@ class Map {
         locations.add(Ravine);
         locations.add(Slope);
         locations.add(Kiosk);
-        
+
     }
-    
-    public void InitCompass(){
-       Start.setLinks((Mountain), Location.Direction.East);
-       Mountain.setLinks(Canyon, Location.Direction.North);
-       Mountain.setLinks(Ravine, Location.Direction.South);
-       Mountain.setLinks(Slope, Location.Direction.East);
-       Mountain.setLinks(Start, Location.Direction.West);
-       Slope.setLinks(Kiosk, Location.Direction.South);
-       Kiosk.setLinks(Start, Location.Direction.East);
+
+    public void InitCompass() {
+        Start.setLinks((Mountain), Location.Direction.East);
+        Mountain.setLinks(Canyon, Location.Direction.North);
+        Mountain.setLinks(Ravine, Location.Direction.South);
+        Mountain.setLinks(Slope, Location.Direction.East);
+        Mountain.setLinks(Start, Location.Direction.West);
+        Slope.setLinks(Kiosk, Location.Direction.South);
+        Kiosk.setLinks(Start, Location.Direction.East);
     }
 }
