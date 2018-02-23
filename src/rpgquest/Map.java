@@ -43,16 +43,21 @@ class Map implements Serializable{
         Slope.setLinks(Kiosk, Location.Direction.South);
         Kiosk.setLinks(Start, Location.Direction.West);
     }
+    
+    public List getMapList(){
+        return locations;
+    }
 
     public boolean MoveCharacter(Location.Direction direction, Player character) {
          // TODO: locate / identify character
          // look at current location
-         System.out.println("currentLocation");
+         
          Location currentLocation = character.getLocation();
          // check to see if we can move in the selected direction from said location
          Location destination = currentLocation.ReadCompass(direction);
          // if so, move,
          if(destination != null){
+             System.out.println(destination.getName());
              currentLocation.exit(character);
              destination.enter(character);
              return true;

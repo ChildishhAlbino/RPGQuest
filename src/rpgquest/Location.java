@@ -9,7 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-class Location implements Serializable{
+class Location implements Serializable {
+
     public static enum Direction {
         North, East, South, West
     };
@@ -18,44 +19,46 @@ class Location implements Serializable{
     public static enum Consequence {
         Nothing, Lose, Win
     };
-    
+
     private java.util.Map<Direction, Location> compass;
     private Consequence consequence;
     private String name;
 
     public Location(String name) {
         this(name, Consequence.Nothing);
-        compass = new java.util.HashMap<>();
-        players = new ArrayList<>();
     }
 
     public Location(String name, Consequence consequence) {
         this.consequence = consequence;
-        this.Location(name);
+        this.name = name;
+        compass = new java.util.HashMap<>();
+        players = new ArrayList<>();
     }
 
     public void setLinks(Location location, Direction direction) {
-        if(location == null){
+        if (location == null) {
             System.out.println("Location null");
         }
-        if(direction == null){
+        if (direction == null) {
             System.out.println("direction null");
         }
-        
         compass.put(direction, location);
     }
-    
-    public void enter(Player player){
+
+    public void enter(Player player) {
         player.setLocation((this));
         this.players.add(player);
     }
-    
-    public void exit(Player player)
-    {
+
+    public void exit(Player player) {
         this.players.remove(player);
     }
-    
-     public Location ReadCompass(Direction direction) {
+
+    public Location ReadCompass(Direction direction) {
         return compass.get(direction);
+    }
+    
+    public String getName(){
+        return this.name;
     }
 }

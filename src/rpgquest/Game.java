@@ -33,6 +33,8 @@ public class Game {
             CharacterCreation();
         }
         map.InitCompass();
+        Location startLocation = (Location)map.getMapList().get(0);
+        startLocation.enter(player);
         while (playing) {
             System.out.println("Options: 1 = move");
 
@@ -102,7 +104,7 @@ public class Game {
         try {
             FileInputStream fileInputStream = new FileInputStream("default.map");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            map = (Map) objectInputStream.readObject();
+            map = (Map)objectInputStream.readObject();
         } catch (FileNotFoundException ex) {
             System.out.println("Serialization failed. " + ex.getMessage());
         } catch (IOException ex) {
