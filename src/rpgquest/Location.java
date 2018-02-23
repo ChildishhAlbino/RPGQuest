@@ -5,31 +5,57 @@
  */
 package rpgquest;
 
-class Location {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+class Location implements Serializable{
     public static enum Direction {
         North, East, South, West
     };
+    private transient List<Player> players;
 
     public static enum Consequence {
         Nothing, Lose, Win
     };
-    private java.util.Map<Location, Direction> compass;
-
+    
+    private java.util.Map<Direction, Location> compass;
     private Consequence consequence;
     private String name;
 
     public Location(String name) {
         this(name, Consequence.Nothing);
         compass = new java.util.HashMap<>();
+        players = new ArrayList<>();
     }
 
     public Location(String name, Consequence consequence) {
-        this.name = name;
         this.consequence = consequence;
+        this.Location(name);
     }
 
     public void setLinks(Location location, Direction direction) {
-        compass.put(location, direction);
+        if(location == null){
+            System.out.println("Location null");
+        }
+        if(direction == null){
+            System.out.println("direction null");
+        }
+        
+        compass.put(direction, location);
+    }
+    
+    public void enter(Player player){
+        player.setLocation((this));
+        this.players.add(player);
+    }
+    
+    public void exit(Player player)
+    {
+        this.players.remove(player);
+    }
+    
+     public Location ReadCompass(Direction direction) {
+        return compass.get(direction);
     }
 }

@@ -5,6 +5,7 @@
  */
 package rpgquest;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,15 +13,15 @@ import java.util.ArrayList;
  *
  * @author Connor
  */
-class Map {
+class Map implements Serializable{
 
     private List<Location> locations;
     private Location Start = new Location("Start");
-    private Location Mountain = new Location("Start");
-    private Location Canyon = new Location("Start", Location.Consequence.Lose);
-    private Location Ravine = new Location("Start", Location.Consequence.Lose);
-    private Location Slope = new Location("Start", Location.Consequence.Win);
-    private Location Kiosk = new Location("Start");
+    private Location Mountain = new Location("Mountain");
+    private Location Canyon = new Location("Canyon", Location.Consequence.Lose);
+    private Location Ravine = new Location("Ravine", Location.Consequence.Lose);
+    private Location Slope = new Location("Slope", Location.Consequence.Win);
+    private Location Kiosk = new Location("Kiosk");
 
     public Map() {
         locations = new ArrayList<>();
@@ -30,7 +31,7 @@ class Map {
         locations.add(Ravine);
         locations.add(Slope);
         locations.add(Kiosk);
-
+        
     }
 
     public void InitCompass() {
@@ -40,6 +41,25 @@ class Map {
         Mountain.setLinks(Slope, Location.Direction.East);
         Mountain.setLinks(Start, Location.Direction.West);
         Slope.setLinks(Kiosk, Location.Direction.South);
-        Kiosk.setLinks(Start, Location.Direction.East);
+        Kiosk.setLinks(Start, Location.Direction.West);
+    }
+
+    public boolean MoveCharacter(Location.Direction direction, Player character) {
+         // TODO: locate / identify character
+         // look at current location
+         System.out.println("currentLocation");
+         Location currentLocation = character.getLocation();
+         // check to see if we can move in the selected direction from said location
+         Location destination = currentLocation.ReadCompass(direction);
+         // if so, move,
+         if(destination != null){
+             currentLocation.exit(character);
+             destination.enter(character);
+             return true;
+         }
+         else{
+             return false;
+         }
+         // else, do nothing (error)
     }
 }
