@@ -61,4 +61,8 @@ class Location implements Serializable {
     public String getName(){
         return this.name;
     }
+    
+    public java.util.Map<Direction, Location> getCompass(){
+        return compass;
+    }
 }

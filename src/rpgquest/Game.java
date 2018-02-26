@@ -29,11 +29,11 @@ public class Game {
 
         player = new Player();
         map = new Map();
-        while (player.GetPlayerCreated() == false) {
-            CharacterCreation();
-        }
+      //  while (player.GetPlayerCreated() == false) {
+            //CharacterCreation();
+       // }
         map.InitCompass();
-        Location startLocation = (Location)map.getMapList().get(0);
+        Location startLocation = (Location) map.getMapList().get(0);
         startLocation.enter(player);
         while (playing) {
             System.out.println("Options: 1 = move");
@@ -46,6 +46,7 @@ public class Game {
     private void Move() {
 
         System.out.println("Move where? 1 = North, 2 = East...");
+        PrintLocations();
         int option = userInput.nextInt();
         Location.Direction direction;
         switch (option) {
@@ -66,11 +67,11 @@ public class Game {
                 direction = null;
         }
         if (direction != null) {
-            if(map.MoveCharacter(direction, player)){
+            if (map.MoveCharacter(direction, player)) {
                 System.out.println("Player moved");
-                System.out.println(player.getLocation());
+                //System.out.println(player.getLocation());
             }
-            
+
         }
     }
 
@@ -104,7 +105,7 @@ public class Game {
         try {
             FileInputStream fileInputStream = new FileInputStream("default.map");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            map = (Map)objectInputStream.readObject();
+            map = (Map) objectInputStream.readObject();
         } catch (FileNotFoundException ex) {
             System.out.println("Serialization failed. " + ex.getMessage());
         } catch (IOException ex) {
@@ -113,6 +114,19 @@ public class Game {
             System.out.println("Couldn't find class " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println("Some other error. " + ex.getMessage());
+        }
+    }
+
+    private void PrintLocations() {
+
+        for (int i = 0; i < Location.Direction.values().length; i++) {
+            Location.Direction direction = Location.Direction.values()[i];
+            Location currentLocation = player.getLocation().getCompass().get(direction);
+            if (currentLocation != null) {
+                String output = currentLocation.getName();
+                System.out.println(direction.toString() + ": " + output);
+            }
+
         }
     }
 }
