@@ -15,6 +15,7 @@ public class RPGQuest {
     /**
      * @param args the command line arguments
      */
+    // this is the main method
     public static void main(String[] args) {
         // TODO code application logic here
         game = new Game();
