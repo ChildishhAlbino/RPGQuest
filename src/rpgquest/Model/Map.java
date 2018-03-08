@@ -40,6 +40,8 @@ public class Map implements Serializable{
         Mountain.setLinks(Ravine, Location.Direction.South);
         Mountain.setLinks(Slope, Location.Direction.East);
         Mountain.setLinks(Start, Location.Direction.West);
+        Canyon.setLinks(Mountain, Location.Direction.South);
+        Ravine.setLinks(Mountain, Location.Direction.North);
         Slope.setLinks(Kiosk, Location.Direction.South);
         Kiosk.setLinks(Start, Location.Direction.West);
     }
