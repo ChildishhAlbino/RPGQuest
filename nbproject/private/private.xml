@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Game.java</file>
-            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Location.java</file>
-            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Map.java</file>
-            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Player.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Serialization/SaveAndLoad.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Model/Map.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/View/View.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/RPGQuest.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/Model/Player.java</file>
+            <file>file:/E:/Documents/GitHub/RPGQuest/src/rpgquest/View/ConsoleView.java</file>
         </group>
     </open-files>
 </project-private>

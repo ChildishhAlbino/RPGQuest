@@ -1,24 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rpgquest;
 
-/**
- *
- * @author Connor
- */
+import rpgquest.Controller.Controller;
+import rpgquest.Model.Model;
+import rpgquest.View.ConsoleView;
+import rpgquest.View.View;
 public class RPGQuest {
     
-    public static Game game;
-    /**
-     * @param args the command line arguments
-     */
-    // this is the main method
+    private static Model model;
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        game = new Game();
+        Model model = new Model();
+        Controller controller = new Controller();
+        View view = new ConsoleView();
+        
+        model.setView(view);
+        controller.setModel(model);
+        view.setController(controller);
+        
+        view.GetInput();
+        
     }
+
+    
+  
     
 }
