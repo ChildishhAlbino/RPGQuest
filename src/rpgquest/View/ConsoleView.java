@@ -45,7 +45,7 @@ public class ConsoleView extends View {
             GetInput();
         }
     }
-
+    
     @Override
     public void PrintLocations(Player player) {
 

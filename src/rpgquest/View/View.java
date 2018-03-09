@@ -35,8 +35,8 @@ public abstract class View implements IView {
 
     }
 
-    @Override
-    public void PrintLocations(Player player) {
-
+    public void PrintLocations(Player player){
+        
     }
+    
 }
