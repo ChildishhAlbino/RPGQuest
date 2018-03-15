@@ -5,9 +5,10 @@ import rpgquest.Controller.Controller;
 import rpgquest.Model.Location;
 import rpgquest.Model.Player;
 
-public class ConsoleView extends View {
+public class ConsoleView implements IView {
 
     private Scanner userInput = new Scanner(System.in);
+    private Controller controller;
 
     @Override
     public void GetInput() {
@@ -45,8 +46,7 @@ public class ConsoleView extends View {
             GetInput();
         }
     }
-    
-    @Override
+
     public void PrintLocations(Player player) {
 
         for (int i = 0; i < Location.Direction.values().length; i++) {
@@ -67,5 +67,15 @@ public class ConsoleView extends View {
             player.setName((givenInput));
             player.SetPlayerCreated(true);
         }
+    }
+
+    @Override
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    @Override
+    public Controller getController() {
+        return controller;
     }
 }

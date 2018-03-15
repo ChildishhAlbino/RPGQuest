@@ -1,15 +1,15 @@
 package rpgquest.Model;
 
 import rpgquest.Model.Location.Direction;
+import rpgquest.View.ConsoleView;
 import rpgquest.View.IView;
-import rpgquest.View.View;
 
 public class Model {
 
     private boolean playing = true;
     private Player player; // reference variable 
     private Map map;
-    private View view;
+    private IView view;
 
     public Model() {
         player = new Player();
@@ -29,19 +29,23 @@ public class Model {
     /**
      * @return the view
      */
-    public View getView() {
+    public IView getView() {
         return view;
     }
 
     /**
      * @param view the view to set
      */
-    public void setView(View view) {
+    public void setView(IView view) {
         this.view = view;
     }
 
     public void ClarifyWithView() {
-        view.PrintLocations(player);
-        view.MoveWhere();
+        if (view instanceof ConsoleView) {
+            ConsoleView cView = (ConsoleView) view;
+            cView.PrintLocations(player);
+            cView.MoveWhere();
+        }
+
     }
 }
