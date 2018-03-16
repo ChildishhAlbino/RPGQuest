@@ -32,7 +32,7 @@ public class GUIPane extends AnchorPane {
         }
         
         else{
-            actiontarget.setText("");
+            
         }
     }
 

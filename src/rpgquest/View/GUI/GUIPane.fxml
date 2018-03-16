@@ -12,16 +12,9 @@ and open the template in the editor.
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml" 
-          alignment="center" hgap="10" vgap="10">
-    <fx:script>
-        function handleSubmitButtonAction() {
-        actiontarget.setText("Calling the JavaScript");
-        }
-    </fx:script>
-    <padding>
-        <Insets top="25" right="25" bottom="10" left="25"/>
-    </padding>
+<GridPane fx:controller="rpgquest.View.GUI.GUIPane" 
+    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
 
     <Text text="Welcome" 
           GridPane.columnIndex="0" GridPane.rowIndex="0"
@@ -42,7 +35,7 @@ and open the template in the editor.
     <HBox spacing="10" alignment="bottom_right" 
           GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button text="Sign In"     
-                onAction="handleSubmitButtonAction(event);"/>
+                onAction="#handleSubmitButtonAction"/>
     </HBox>
 
     <Text fx:id="actiontarget"

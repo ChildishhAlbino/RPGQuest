@@ -12,7 +12,7 @@ public class RPGQuest {
     public static void main(String[] args) {
         Model model = new Model();
         Controller controller = new Controller();
-        IView view = new ConsoleView();
+        IView view = new GUIView();
 
         model.setView(view);
         controller.setModel(model);

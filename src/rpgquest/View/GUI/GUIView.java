@@ -34,12 +34,12 @@ public class GUIView extends Application implements IView {
     
     public void InitGUI(){
         launch();
+        GetInput();
     }
 
     @Override
     public void GetInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        System.out.println("Test");}
 
     @Override
     public void setController(Controller controller) {
