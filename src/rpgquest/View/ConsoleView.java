@@ -47,11 +47,11 @@ public class ConsoleView implements IView {
         }
     }
 
-    public void PrintLocations(Player player) {
+    public void PrintLocations(Location location) {
 
         for (int i = 0; i < Location.Direction.values().length; i++) {
-            Location.Direction direction = Location.Direction.values()[i];
-            Location currentLocation = player.getLocation().getCompass().get(direction);
+         Location.Direction direction = Location.Direction.values()[i];
+         Location currentLocation = location.ReadCompass(direction);
             if (currentLocation != null) {
                 String output = currentLocation.getName();
                 System.out.println(direction.toString() + ": " + output);
@@ -78,4 +78,12 @@ public class ConsoleView implements IView {
     public Controller getController() {
         return controller;
     }
+    @Override
+    public void Update(Player player) {
+        PrintLocations(player.getLocation());
+        MoveWhere();
+    }
+
+    
+    
 }

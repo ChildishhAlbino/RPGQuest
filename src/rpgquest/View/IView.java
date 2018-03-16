@@ -6,6 +6,7 @@
 package rpgquest.View;
 
 import rpgquest.Controller.Controller;
+import rpgquest.Model.Player;
 
 public interface IView {
     
@@ -16,5 +17,6 @@ public interface IView {
     void MoveWhere();
     
     Controller getController();
-
+    
+    void Update(Player player);
 }

@@ -41,11 +41,7 @@ public class Model {
     }
 
     public void ClarifyWithView() {
-        if (view instanceof ConsoleView) {
-            ConsoleView cView = (ConsoleView) view;
-            cView.PrintLocations(player);
-            cView.MoveWhere();
-        }
-
+       
+        view.Update(player);
     }
 }

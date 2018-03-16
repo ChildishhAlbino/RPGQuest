@@ -1,8 +1,10 @@
 package rpgquest;
 
+import static javafx.application.Application.launch;
 import rpgquest.Controller.Controller;
 import rpgquest.Model.Model;
 import rpgquest.View.ConsoleView;
+import rpgquest.View.GUI.GUIView;
 import rpgquest.View.IView;
 
 public class RPGQuest {
@@ -15,7 +17,11 @@ public class RPGQuest {
         model.setView(view);
         controller.setModel(model);
         view.setController(controller);
-
+        
+        if(view instanceof GUIView){
+            GUIView guiView = (GUIView)view;
+            guiView.InitGUI();
+        }
         view.GetInput();
     }
 
