@@ -5,7 +5,7 @@
  */
 package rpgquest.Model;
 
-import java.io.Serializable;
+import rpgquest.View.ConsoleView;
 
 public class Player {
 
@@ -13,10 +13,10 @@ public class Player {
     private boolean playerCreated = false;
     private Location location;
 
-    public Player() {
-
+    public Player(String name) {
+        setName(name);
     }
-
+   
     public void setName(String name) {
         if (this.name == null) {
             this.name = name;
@@ -31,15 +31,6 @@ public class Player {
 
     public boolean GetPlayerCreated() {
         return playerCreated;
-    }
-
-    public boolean AuthorityCheck(int authorityLevel) {
-        if (authorityLevel > 3) {
-            return true;
-        } else {
-            System.out.println("You do not have the authority level to do this.");
-            return false;
-        }
     }
     
     public void SetPlayerCreated(boolean value){

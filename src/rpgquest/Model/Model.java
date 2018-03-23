@@ -12,36 +12,41 @@ public class Model {
     private IView view;
 
     public Model() {
-        player = new Player();
         map = new Map();
         map.InitCompass();
+    }
+
+    public void Start() {
         Location startLocation = (Location) map.getMapList().get(0);
         startLocation.enter(player);
     }
 
     public void Move(Direction direction) {
-        if (player.getLocation().ReadCompass(direction) != null) {
-            map.MoveCharacter(direction, player);
+        if (getPlayer().getLocation().ReadCompass(direction) != null) {
+            map.MoveCharacter(direction, getPlayer());
         }
         view.GetInput();
     }
 
-    /**
-     * @return the view
-     */
     public IView getView() {
         return view;
     }
 
-    /**
-     * @param view the view to set
-     */
     public void setView(IView view) {
         this.view = view;
     }
 
     public void ClarifyWithView() {
-       
-        view.Update(player);
+
+        view.Update(getPlayer());
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
 }

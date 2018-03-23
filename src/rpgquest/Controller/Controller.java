@@ -1,11 +1,15 @@
 package rpgquest.Controller;
 
+import rpgquest.Database.DBManager;
 import rpgquest.Model.Location.Direction;
 import rpgquest.Model.Model;
+import rpgquest.Model.Player;
+import rpgquest.View.ConsoleView;
 
 public class Controller {
 
     private Model model;
+    private DBManager dbm;
 
     public Model getModel() {
         return model;
@@ -16,18 +20,29 @@ public class Controller {
     }
 
     public void Start() {
-       
+        dbm = new DBManager();
     }
-    
-    public void ReceiveInput(int command){
-        switch(command){
+
+    public void ReceiveInput(int command) {
+        switch (command) {
             case 1:
                 model.ClarifyWithView();
                 break;
         }
     }
-    
-    public void NotifyOfMove(Direction direction){
+
+    public void NotifyOfMove(Direction direction) {
         model.Move(direction);
+    }
+
+    public void DownloadPlayer() {
+        model.setPlayer(dbm.RetrievePlayer(1));
+    }
+
+    public void NewPlayer() {
+        if (model.getView() instanceof ConsoleView) {
+            ConsoleView cView = (ConsoleView) model.getView();
+            model.setPlayer(new Player(cView.AskName()));
+        }
     }
 }

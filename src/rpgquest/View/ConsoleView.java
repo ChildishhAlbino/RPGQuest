@@ -50,22 +50,12 @@ public class ConsoleView implements IView {
     public void PrintLocations(Location location) {
 
         for (int i = 0; i < Location.Direction.values().length; i++) {
-         Location.Direction direction = Location.Direction.values()[i];
-         Location currentLocation = location.ReadCompass(direction);
+            Location.Direction direction = Location.Direction.values()[i];
+            Location currentLocation = location.ReadCompass(direction);
             if (currentLocation != null) {
                 String output = currentLocation.getName();
                 System.out.println(direction.toString() + ": " + output);
             }
-        }
-    }
-
-    public void CharacterCreation(Player player) {
-        System.out.println("Please enter a name");
-        String givenInput = this.userInput.nextLine();
-
-        if (player.AuthorityCheck(10) == true) {
-            player.setName((givenInput));
-            player.SetPlayerCreated(true);
         }
     }
 
@@ -78,12 +68,34 @@ public class ConsoleView implements IView {
     public Controller getController() {
         return controller;
     }
+
     @Override
     public void Update(Player player) {
+        System.out.println(controller.getModel().getPlayer().GetName());
         PrintLocations(player.getLocation());
         MoveWhere();
     }
 
-    
-    
+    public void AskToRestore() {
+        boolean asking = true;
+        while (asking) {
+            System.out.println("Do you want to restore from a previous session? ");
+            String input = userInput.next();
+
+            if ("yes".equals(input.toLowerCase())) {
+                controller.DownloadPlayer();
+                asking = false;
+            } else if ("no".equals(input.toLowerCase())) {
+                controller.NewPlayer();
+                asking = false;
+            } else {
+                input = "";
+            }
+        }
+    }
+
+    public String AskName() {
+        return userInput.next();
+    }
+
 }
