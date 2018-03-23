@@ -10,8 +10,10 @@ public class Model {
     private Player player; // reference variable 
     private Map map;
     private IView view;
-
-    public Model() {
+    
+    private static Model instance;
+    
+    private Model() {
         map = new Map();
         map.InitCompass();
     }
@@ -47,6 +49,16 @@ public class Model {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    /**
+     * @return the instance
+     */
+    public static Model getInstance() {
+        if(instance == null){
+            instance = new Model();
+        }
+        return instance;
     }
 
 }

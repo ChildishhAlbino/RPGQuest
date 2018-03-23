@@ -10,14 +10,17 @@ import rpgquest.View.IView;
 public class RPGQuest {
 
     public static void main(String[] args) {
-        Model model = new Model();
+        Model model = Model.getInstance();
         Controller controller = Controller.getInstance();
         IView view = new GUIView();
         DBManager dbm = DBManager.GetInstance();
-        controller.Start();
+        
+        
         model.setView(view);
         controller.setModel(model);
         view.setController(controller);
+        
+        controller.Start();
         dbm.QueryDB();
 
         if (view instanceof GUIView) {
