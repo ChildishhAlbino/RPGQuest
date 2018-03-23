@@ -83,7 +83,7 @@ public class ConsoleView implements IView {
             String input = userInput.next();
 
             if ("yes".equals(input.toLowerCase())) {
-                if (controller.DownloadPlayer()) {
+                if (controller.DownloadPlayer(controller.getPlayerID())) {
                     asking = false;
                 } else {
                     System.out.println("Cannot create character. Null player.");

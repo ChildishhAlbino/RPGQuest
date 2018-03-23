@@ -18,9 +18,12 @@ import rpgquest.Model.Player;
  * @author Student
  */
 public class DBManager {
-
+    private static DBManager dbm;
     private Connection connect;
-
+    
+    private DBManager(){
+        
+    }
     private void ConnectToDB() {
         if (this.connect == null) {
             try {
@@ -78,5 +81,27 @@ public class DBManager {
             System.out.println("SQL Error");
         }
         return null;
+    }
+
+    public int AttemptToLogon(String userName, String password) {
+        ConnectToDB();
+        try {
+            String query = "SELECT player_id FROM userlogin WHERE username = ? AND user_pWord = ?";
+            PreparedStatement command = connect.prepareStatement(query);
+            command.setString(1, userName);
+            command.setString(2, password);
+            ResultSet rs = command.executeQuery();
+            rs.next();
+            return rs.getInt("player_id");
+
+        } catch (SQLException ex) {
+            System.out.println("Problem connecting to server");
+        }
+        return -1;
+    }
+    
+    public static DBManager GetInstance(){
+        if(dbm == null){dbm = new DBManager();}
+        return dbm;
     }
 }

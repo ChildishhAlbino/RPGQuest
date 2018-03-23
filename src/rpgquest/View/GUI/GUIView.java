@@ -39,7 +39,7 @@ public class GUIView extends Application implements IView {
 
     @Override
     public void GetInput() {
-        System.out.println("Test");
+        //System.out.println("Test");
     }
 
     @Override

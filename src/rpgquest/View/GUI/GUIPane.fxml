@@ -25,13 +25,13 @@ and open the template in the editor.
     <Label text="User Name:"
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
  
-    <TextField 
-        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="loginBox"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
  
-    <Label text="Password:"
+    <Label text="Password:" 
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
  
-    <PasswordField fx:id="passwordField" 
+    <PasswordField fx:id="pWordBox"
                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     
     <HBox spacing="10" alignment="bottom_right" 

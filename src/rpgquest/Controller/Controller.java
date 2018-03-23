@@ -1,5 +1,6 @@
 package rpgquest.Controller;
 
+import javafx.beans.property.StringProperty;
 import rpgquest.Database.DBManager;
 import rpgquest.Model.Location.Direction;
 import rpgquest.Model.Model;
@@ -10,6 +11,11 @@ public class Controller {
 
     private Model model;
     private DBManager dbm;
+    private static Controller instance;
+    private int playerID;
+    private Controller() {
+
+    }
 
     public Model getModel() {
         return model;
@@ -20,7 +26,7 @@ public class Controller {
     }
 
     public void Start() {
-        dbm = new DBManager();
+        dbm = DBManager.GetInstance();
     }
 
     public void ReceiveInput(int command) {
@@ -35,13 +41,13 @@ public class Controller {
         model.Move(direction);
     }
 
-    public boolean DownloadPlayer() {
+    public boolean DownloadPlayer(int id) {
         Player player;
-        player = (dbm.RetrievePlayer(3));
+        player = (dbm.RetrievePlayer(id));
         if (player == null) {
             return false;
         }
-        
+
         model.setPlayer(player);
         return true;
     }
@@ -51,5 +57,20 @@ public class Controller {
             ConsoleView cView = (ConsoleView) model.getView();
             model.setPlayer(new Player(cView.AskName()));
         }
+    }
+
+    public static Controller getInstance() {
+        if (instance == null) {
+            instance = new Controller();
+        }
+        return instance;
+    }
+
+    public void setPlayerID(int id) {
+       this.playerID = id;
+    }
+    
+    public int getPlayerID(){
+        return playerID;
     }
 }

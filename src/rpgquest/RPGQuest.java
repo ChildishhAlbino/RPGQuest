@@ -11,25 +11,24 @@ public class RPGQuest {
 
     public static void main(String[] args) {
         Model model = new Model();
-        Controller controller = new Controller();
-        IView view = new ConsoleView();
-        DBManager dbm = new DBManager();
-
+        Controller controller = Controller.getInstance();
+        IView view = new GUIView();
+        DBManager dbm = DBManager.GetInstance();
+        controller.Start();
         model.setView(view);
         controller.setModel(model);
         view.setController(controller);
         dbm.QueryDB();
 
-        controller.Start();
         if (view instanceof GUIView) {
             GUIView guiView = (GUIView) view;
             guiView.InitGUI();
         } else {
             ConsoleView cView = (ConsoleView) view;
             cView.AskToRestore();
+            model.Start();
         }
 
-        model.Start();
         view.GetInput();
     }
 
