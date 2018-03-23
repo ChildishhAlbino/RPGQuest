@@ -35,8 +35,15 @@ public class Controller {
         model.Move(direction);
     }
 
-    public void DownloadPlayer() {
-        model.setPlayer(dbm.RetrievePlayer(1));
+    public boolean DownloadPlayer() {
+        Player player;
+        player = (dbm.RetrievePlayer(3));
+        if (player == null) {
+            return false;
+        }
+        
+        model.setPlayer(player);
+        return true;
     }
 
     public void NewPlayer() {

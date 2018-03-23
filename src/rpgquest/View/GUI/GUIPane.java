@@ -15,7 +15,9 @@ import javafx.scene.text.Text;
  * @author Connor
  */
 public class GUIPane extends AnchorPane {
+
     private int i = 0;
+
     @FXML
     private void initialize() {
     }
@@ -26,13 +28,10 @@ public class GUIPane extends AnchorPane {
     @FXML
     protected void handleSubmitButtonAction(ActionEvent event) {
         i++;
-        if(i == 1)
-        {
+        if (i == 1) {
             actiontarget.setText("Sign in button pressed");
-        }
-        
-        else{
-            
+        } else {
+
         }
     }
 

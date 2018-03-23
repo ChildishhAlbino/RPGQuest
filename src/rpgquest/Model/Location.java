@@ -58,12 +58,12 @@ public class Location implements Serializable {
     public Location ReadCompass(Direction direction) {
         return compass.get(direction);
     }
-    
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
-    
-    public java.util.Map<Direction, Location> getCompass(){
+
+    public java.util.Map<Direction, Location> getCompass() {
         return compass;
     }
 }

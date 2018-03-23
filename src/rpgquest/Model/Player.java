@@ -16,7 +16,7 @@ public class Player {
     public Player(String name) {
         setName(name);
     }
-   
+
     public void setName(String name) {
         if (this.name == null) {
             this.name = name;
@@ -32,16 +32,16 @@ public class Player {
     public boolean GetPlayerCreated() {
         return playerCreated;
     }
-    
-    public void SetPlayerCreated(boolean value){
+
+    public void SetPlayerCreated(boolean value) {
         this.playerCreated = value;
     }
 
     public Location getLocation() {
-           return this.location;
+        return this.location;
     }
-    
-    public void setLocation(Location location){
+
+    public void setLocation(Location location) {
         this.location = location;
     }
 }

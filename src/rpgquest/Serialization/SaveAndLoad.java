@@ -18,6 +18,7 @@ import rpgquest.Model.Map;
  * @author conno
  */
 public class SaveAndLoad {
+
     public static void SaveMap(Map map) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("default.map");
@@ -46,7 +47,6 @@ public class SaveAndLoad {
      * (ClassNotFoundException ex) { System.out.println("Couldn't find class " +
      * ex.getMessage()); } catch (Exception ex) { System.out.println("Some other
      * error. " + ex.getMessage()); }
-      *
-     */ 
-        
-    }
+     *
+     */
+}

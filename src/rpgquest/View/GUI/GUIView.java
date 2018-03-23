@@ -31,15 +31,16 @@ public class GUIView extends Application implements IView {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void InitGUI(){
+
+    public void InitGUI() {
         launch();
         GetInput();
     }
 
     @Override
     public void GetInput() {
-        System.out.println("Test");}
+        System.out.println("Test");
+    }
 
     @Override
     public void setController(Controller controller) {

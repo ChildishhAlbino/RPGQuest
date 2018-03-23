@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import rpgquest.Model.Player;
 
 /**
@@ -31,7 +29,7 @@ public class DBManager {
                         "root",
                         "");
             } catch (SQLException ex) {
-                System.out.println("SQL error");
+                System.out.println("Cannot connect to DB");
                 this.connect = null;
             }
         }

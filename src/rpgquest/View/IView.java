@@ -9,14 +9,14 @@ import rpgquest.Controller.Controller;
 import rpgquest.Model.Player;
 
 public interface IView {
-    
+
     void GetInput();
 
     void setController(Controller controller);
 
     void MoveWhere();
-    
+
     Controller getController();
-    
+
     void Update(Player player);
 }

@@ -18,18 +18,17 @@ public class RPGQuest {
         model.setView(view);
         controller.setModel(model);
         view.setController(controller);
-        //dbm.QueryDB();
- 
+        dbm.QueryDB();
+
         controller.Start();
-        if(view instanceof GUIView){
-            GUIView guiView = (GUIView)view;
+        if (view instanceof GUIView) {
+            GUIView guiView = (GUIView) view;
             guiView.InitGUI();
-        }
-        else{
-            ConsoleView cView = (ConsoleView)view;
+        } else {
+            ConsoleView cView = (ConsoleView) view;
             cView.AskToRestore();
         }
-       
+
         model.Start();
         view.GetInput();
     }

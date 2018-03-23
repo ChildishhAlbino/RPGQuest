@@ -83,8 +83,11 @@ public class ConsoleView implements IView {
             String input = userInput.next();
 
             if ("yes".equals(input.toLowerCase())) {
-                controller.DownloadPlayer();
-                asking = false;
+                if (controller.DownloadPlayer()) {
+                    asking = false;
+                } else {
+                    System.out.println("Cannot create character. Null player.");
+                }
             } else if ("no".equals(input.toLowerCase())) {
                 controller.NewPlayer();
                 asking = false;
