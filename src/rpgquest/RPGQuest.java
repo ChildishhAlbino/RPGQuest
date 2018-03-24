@@ -5,16 +5,18 @@ import rpgquest.Database.DBManager;
 import rpgquest.Model.Model;
 import rpgquest.View.ConsoleView;
 import rpgquest.View.GUI.GUIView;
-import rpgquest.View.IView;
+import rpgquest.View.*;
 
 public class RPGQuest {
 
     public static void main(String[] args) {
+        ViewManager<GUIView> vm = new ViewManager<>(new GUIView());
+        
         Model model = Model.getInstance();
         Controller controller = Controller.getInstance();
-        IView view = new GUIView();
-        DBManager dbm = DBManager.GetInstance();
+        IView view = ViewManager.getInstance();
         
+        DBManager dbm = DBManager.GetInstance();
         
         model.setView(view);
         controller.setModel(model);

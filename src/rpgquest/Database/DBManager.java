@@ -32,12 +32,11 @@ public class DBManager {
                         "root",
                         "");
             } catch (SQLException ex) {
-                System.out.println("Cannot connect to DB");
+                System.out.println("Cannot connect to DB");              
                 this.connect = null;
             }
         }
     }
-
     public void QueryDB() {
         ConnectToDB();
         try {
@@ -104,4 +103,6 @@ public class DBManager {
         if(dbm == null){dbm = new DBManager();}
         return dbm;
     }
+    
+    
 }

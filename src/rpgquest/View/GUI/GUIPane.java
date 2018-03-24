@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import rpgquest.Controller.Controller;
 import rpgquest.Database.DBManager;
-import rpgquest.Model.Player;
+import rpgquest.Model.Model;
 
 public class GUIPane extends AnchorPane {
 
@@ -34,6 +34,7 @@ public class GUIPane extends AnchorPane {
             int playerID = dbm.AttemptToLogon(loginBox.getText(), pWordBox.getText());
             if (playerID == -1) {
                 actiontarget.setText("Incorrect Login");
+
             } else {
                 controller.setPlayerID(playerID);
                 controller.DownloadPlayer(playerID);
@@ -43,5 +44,23 @@ public class GUIPane extends AnchorPane {
             actiontarget.setText("Please enter login data");
         }
 
+    }
+
+    @FXML
+    protected void handleSignUpButtonAction(ActionEvent event) {
+        if (!"".equals(loginBox.getText()) && !"".equals(pWordBox.getText())) {
+
+            DBManager dbm = DBManager.GetInstance();
+            int playerID = dbm.AttemptToLogon(loginBox.getText(), pWordBox.getText());
+            if (playerID != -1) {
+                actiontarget.setText("User already found. Please enter new details.");
+            } else {
+                Model model = Model.getInstance();
+                controller.NewPlayer();
+                dbm.AddPlayer(model.getPlayer());
+            }
+        } else {
+            actiontarget.setText("Please enter login data");
+        }
     }
 }

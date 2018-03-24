@@ -38,6 +38,8 @@ and open the template in the editor.
           GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button text="Sign In"     
                 onAction="#handleSubmitButtonAction"/>
+        
+        <Button text ="Sign Up" onAction = "#handleSignUpButtonAction"/>
     </HBox>
 
     <Text fx:id="actiontarget"

@@ -65,5 +65,6 @@ public class Location implements Serializable {
 
     public java.util.Map<Direction, Location> getCompass() {
         return compass;
+
     }
 }

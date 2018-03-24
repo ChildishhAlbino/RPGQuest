@@ -53,10 +53,16 @@ public class Controller {
     }
 
     public void NewPlayer() {
+        String name = null;
         if (model.getView() instanceof ConsoleView) {
             ConsoleView cView = (ConsoleView) model.getView();
-            model.setPlayer(new Player(cView.AskName()));
+            name = cView.AskName();
         }
+        else{
+           name = "Cyrus";
+        }
+        model.setPlayer(new Player(name));
+        
     }
 
     public static Controller getInstance() {

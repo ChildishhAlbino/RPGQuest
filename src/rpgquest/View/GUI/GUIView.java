@@ -26,7 +26,7 @@ public class GUIView extends Application implements IView {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("GUIPane.fxml"));
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1280, 720);
 
         stage.setScene(scene);
         stage.show();
