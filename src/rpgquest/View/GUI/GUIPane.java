@@ -58,9 +58,19 @@ public class GUIPane extends AnchorPane {
                 Model model = Model.getInstance();
                 controller.NewPlayer();
                 dbm.AddPlayer(model.getPlayer());
+                playerID = dbm.GetPlayerIDByName(model.getPlayer().GetName());
+                if(playerID != -1){
+                    dbm.AddUser(loginBox.getText(), pWordBox.getText(), playerID);
+                    return;
+                }
+                else{
+                    System.out.println("Error: Could not find player.");
+                }
             }
         } else {
             actiontarget.setText("Please enter login data");
         }
     }
+    
+   
 }

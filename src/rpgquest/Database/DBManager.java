@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import rpgquest.Model.Player;
 
 /**
@@ -18,12 +20,14 @@ import rpgquest.Model.Player;
  * @author Student
  */
 public class DBManager {
+
     private static DBManager dbm;
     private Connection connect;
-    
-    private DBManager(){
-        
+
+    private DBManager() {
+
     }
+
     private void ConnectToDB() {
         if (this.connect == null) {
             try {
@@ -32,11 +36,12 @@ public class DBManager {
                         "root",
                         "");
             } catch (SQLException ex) {
-                System.out.println("Cannot connect to DB");              
+                System.out.println("Cannot connect to DB");
                 this.connect = null;
             }
         }
     }
+
     public void QueryDB() {
         ConnectToDB();
         try {
@@ -61,6 +66,21 @@ public class DBManager {
             statement.execute(command);
         } catch (SQLException ex) {
             System.out.println("SQL error");
+        }
+
+    }
+
+    public void AddUser(String username, String password, int playerID) {
+        ConnectToDB();
+        String sql = "INSERT INTO userlogin (username, user_pWord, signup_date, player_ID) VALUES (?, ?, NOW(), ?)";
+        try {
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setInt(3, playerID);
+            statement.execute();
+        } catch (SQLException ex) {
+            System.out.println("Error: Could not add user login");
         }
 
     }
@@ -98,11 +118,28 @@ public class DBManager {
         }
         return -1;
     }
-    
-    public static DBManager GetInstance(){
-        if(dbm == null){dbm = new DBManager();}
+
+    public int GetPlayerIDByName(String name) {
+        int id;
+        try {
+            ConnectToDB();
+            String sql = "SELECT ID FROM player WHERE name = ?";
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1, name);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            id = rs.getInt("ID");
+        } catch (SQLException ex) {
+            id = -1;
+        }
+        return id;
+    }
+
+    public static DBManager GetInstance() {
+        if (dbm == null) {
+            dbm = new DBManager();
+        }
         return dbm;
     }
-    
-    
+
 }

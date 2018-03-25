@@ -59,7 +59,7 @@ public class Controller {
             name = cView.AskName();
         }
         else{
-           name = "Cyrus";
+           name = "Mike";
         }
         model.setPlayer(new Player(name));
         
